@@ -1,17 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>CI/CD Static HTML</title>
+    <title>Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            background: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #4a90e2;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        section {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #4a90e2;
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: #222;
+            color: #fff;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 18px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Selamat datang di Web CI/CD</h1>
-    <p>boomer taik.</p>
 
-    <h2>Info Deployment</h2>
-    <ul>
-        <li>Host: VM Cloud</li>
-        <li>Pipeline: Jenkins + GitHub Webhook</li>
-    </ul>
+    <header>
+        <h1>Website</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, atque? Ab laudantium sequi laboriosam pariatur tenetur accusamus quis? Sint quidem quo nam consequuntur officia, earum modi illum quibusdam mollitia dolores?</p>
+    </header>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="beranda" class="hero">
+            <h2>Selamat Datang!</h2>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias nesciunt deserunt, cumque ea pariatur consequuntur fuga accusantium libero recusandae necessitatibus. Perferendis nam rerum pariatur assumenda ab et explicabo, quas corporis?
+            </p>
+            <a href="#kontak" class="btn">Hubungi Saya</a>
+        </section>
+
+        <section id="tentang">
+            <h2>Tentang Website Ini</h2>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui praesentium ad quae consequatur obcaecati sapiente perspiciatis, dolores velit ab quasi repellendus enim quibusdam illum dolorem voluptate delectus error aliquam nihil.
+            </p>
+            <ul>
+                <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, alias, tempora excepturi ea animi, rerum neque voluptas quam vero beatae quisquam expedita repudiandae recusandae voluptate eveniet quod cupiditate ullam quia!</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, voluptatem numquam ea dolorum eum quaerat? Eum natus, libero sint excepturi sequi dolorem ut ratione aperiam sapiente error magnam, laboriosam quia.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nulla eligendi, in modi expedita suscipit accusamus laudantium architecto illo eum, vel atque repellendus corrupti delectus quasi esse voluptate? Vitae, facilis?</li>
+            </ul>
+        </section>
+
+    </div>
+
 </body>
 </html>

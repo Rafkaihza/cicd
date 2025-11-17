@@ -1,48 +1,41 @@
 pipeline {
     agent any
 
-    triggers {
-        // Supaya bisa ditrigger oleh GitHub webhook
-        githubPush()
+    environment {
+        IMAGE_NAME = "rafkaihza78/bnsp-web"
+        IMAGE_TAG  = "latest"
     }
 
     stages {
-        stage('Checkout') {
+        stage('Build Docker Image') {
             steps {
-                checkout scm
+                sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
             }
         }
 
-        stage('Build') {
+        stage('Login & Push to Docker Hub') {
             steps {
-                echo 'Static HTML - tidak ada proses build.'
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credential',
+                    usernameVariable: 'rafkaihza78',
+                    passwordVariable: 'Rafka7788#*'
+                )]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
+                }
             }
         }
 
-        stage('Test') {
+        stage('Deploy Container') {
             steps {
-                echo 'Menjalankan pseudo-test (untuk demo).'
-                sh 'ls -lah'
+                // stop container lama kalau ada, lalu run yang baru
+                sh '''
+                docker stop webapp || true
+                docker rm webapp || true
+                docker pull ${IMAGE_NAME}:${IMAGE_TAG}
+                docker run -d -p 80:80 --name webapp ${IMAGE_NAME}:${IMAGE_TAG}
+                '''
             }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy ke Apache /var/www/html'
-                sh """
-                    rm -rf /var/www/html/*
-                    cp -r * /var/www/html/
-                """
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline sukses. Web sudah terupdate.'
-        }
-        failure {
-            echo 'Pipeline gagal. Cek log di Console Output.'
         }
     }
 }
